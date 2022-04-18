@@ -1,0 +1,133 @@
+#: import environ os.environ
+#: import gch kivy.utils.get_color_from_hex
+
+<CalcScreen>
+    orientation: "vertical"
+
+    MDBoxLayout:
+        adaptive_height: True
+        orientation: "vertical"
+        md_bg_color: gch("#FFD700")
+        spacing: dp(10)
+        padding: [dp(25), 0, dp(25), dp(25)]
+
+        MDLabel:
+            text: "Goldback Transaction Calculator"
+            font_style: "Subtitle2"
+            theme_text_color: "Hint"
+            adaptive_height: True
+        
+        
+    
+    MDBoxLayout:
+        orientation: "vertical"
+        canvas.before:
+            Color:
+                rgba: root.theme_cls.bg_normal
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [dp(20), dp(20), 0, 0]
+
+        ScrollView:
+
+            MDBoxLayout:
+                adaptive_height: True
+                orientation: "vertical"
+                padding: dp(15)
+
+                MDLabel:
+                    id: usd_owedL
+                    text: "Amount Owed in $USD"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+
+                GoldbackTextField:
+                    id: usd_owed_inTI
+                    text: ""
+
+                MDLabel:
+                    id: gb_exchange_rateL 
+                    text: "Goldback Exchange Rate*"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+
+                GoldbackTextField:
+                    id: gb_exchange_rateTI
+                    text: "0"
+
+                MDLabel:
+                    id: num_gb_owedL
+                    text: "Number of Goldbacks Owed"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+                    
+                MDLabel:
+                    id: num_gb_owedLV
+                    text: ""
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+
+                MDLabel:
+                    id: num_gb_paidL
+                    text: "Goldbacks Paid By The Customer"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+
+                GoldbackTextField:
+                    id: num_gb_paidTI
+                    text: "0"
+
+                MDLabel:
+                    id: cus_owes_addL
+                    text: "Customer Owes You an Additional"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+
+                MDLabel:
+                    id: cus_owes_addLV
+                    text: ""
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+                    
+                MDLabel:
+                    id: pay_cus_changeL
+                    text: "Pay The Customer This in Change"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+
+                MDLabel:
+                    id: pay_cus_changeLV
+                    text: "Pay The Customer This in Change"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+
+                Button:
+                    id: calc_bt
+                    text:'Calculate'
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+                   
+
+                MDLabel:
+                    text: "*THE GOLDBACK EXCHANGE RATE CAN BE MANUALLY ADJUSTED."
+                    font_style: "Subtitle2"
+                    theme_text_color: "Hint"
+                    adaptive_height: True
+        
+
+
+
+       
+
+                

@@ -1,0 +1,39 @@
+#: import environ os.environ
+#: import gch kivy.utils.get_color_from_hex
+
+<AboutAppScreen>
+    orientation: "vertical"
+
+    MDBoxLayout:
+        adaptive_height: True
+        orientation: "vertical"
+        md_bg_color: gch("#FFD700")
+        spacing: dp(10)
+        padding: [dp(25), 0, dp(25), dp(25)]
+
+
+
+    MDBoxLayout:
+        canvas.before:
+            Color:
+                rgba: root.theme_cls.bg_normal
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [dp(20), dp(20), 0, 0]
+
+        ScrollView:
+
+            MDList:
+
+                MDBoxLayout:
+                    adaptive_height: True
+                    padding: dp(15)
+
+                    MDLabel:
+                        text: "This app is a community project. It is in no way backed by Goldback or UPMA./n Please feel free to contribute code./n contact: DakotaJKeeler@protonmail.com"
+                        font_style: "Subtitle2"
+                        theme_text_color: "Hint"
+                        adaptive_height: True
+
+                

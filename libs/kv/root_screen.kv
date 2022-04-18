@@ -1,0 +1,85 @@
+#: import environ os.environ
+#: import gch kivy.utils.get_color_from_hex
+#: import StiffScrollEffect kivymd.effects.stiffscroll.StiffScrollEffect
+
+#: import AboutAppScreen libs.baseclass.aboutapp_screen.AboutAppScreen
+#: import AboutGBScreen libs.baseclass.aboutgb_screen.AboutGBScreen
+#: import CalcScreen libs.baseclass.calc_screen.CalcScreen
+#: import HowToSpendScreen libs.baseclass.spend_screen.HowToSpendScreen
+
+<GoldbackRootScreen>
+    md_bg_color: gch("#FFD700")
+
+    MDTabs:
+        id: tab
+        background_color: gch("#FFD700")
+        text_color_normal: 0., 0., 0., .5
+        text_color_active: 0, 0, 0, 0
+        indicator_color: 1, 1, 1, 1
+        tab_indicator_type: "line-round"
+        tab_indicator_anim: True
+
+        CalcScreen:
+            text: "[b]Calc[/b]"
+        AboutGBScreen:
+            text: "[b]About GB[/b]"
+        HowToSpendScreen:
+            text: "[b]Spend[/b]"
+        AboutAppScreen:
+            text: "[b]App info[/b]"
+
+<ScrollView>
+    bar_width: 0
+    effect_cls: StiffScrollEffect
+
+
+<GoldbackTextField@MDTextFieldRound>
+    size_hint_y: None
+    text_color_normal: gch("#000000")
+    height: dp(90)
+    icon_left_color: gch("#ffef99")
+    color_active: gch("#fff3b2")
+    normal_color: gch("#ffe766")
+    line_color: (0, 0, 0, 0)
+    foreground_color: gch("#ffffff")
+    font_name: f"{environ['GOLDBACK_ROOT']}/assets/fonts/Raleway-Medium.ttf"
+
+<GoldbackListItem>
+    size_hint_y: None
+    padding: dp(20)
+    spacing: dp(10)
+    height: dp(80)
+
+    canvas:
+        Color:
+            rgba:
+                self.theme_cls.divider_color
+        Line:
+            points: (root.x+dp(16), root.y, root.x+self.width-dp(16)-0, root.y)
+
+    MDBoxLayout:
+        adaptive_size: True
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        FitImage:
+            source: root.image
+            size_hint: (None, None)
+            size: (dp(70), dp(60))
+            radius: [dp(10),]
+
+    MDBoxLayout:
+        orientation: "vertical"
+        adaptive_height: True
+        pos_hint: {"center_x": .5, "center_y": .5}
+        spacing: dp(10)
+
+        MDLabel:
+            text: root.text
+            font_style: "Subtitle1"
+            adaptive_height: True
+
+        MDLabel:
+            text: root.secondary_text
+            font_style: "Caption"
+            theme_text_color: "Hint"
+            adaptive_height: True
